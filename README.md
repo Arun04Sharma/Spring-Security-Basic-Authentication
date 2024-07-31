@@ -3,5 +3,6 @@
 <p></p> This connection is a bidirectional, full-duplex communication channel, allowing the client and server to exchange two-way data simultaneously</p>
 
 <h2>Project Usecase:</h2>
-<p>Exposed the Rest Endpoint to get the data and then send it to the server using the WebSocket</p>
+<p>Exposed the Rest Endpoint to get the data and then send it to the server using the WebSocket.</p>
 <p>To Secure our exposed API Endpoints I have implemented the Basic Authentication Mechanism using Spring-Security.</p>
+<p>For Basic Authentication Mechanism I have used the in-memory authentication to set the username and the password and the roles for the authentication</p>
