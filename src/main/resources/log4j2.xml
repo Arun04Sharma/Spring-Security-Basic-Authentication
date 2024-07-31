@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Properties>
+		<Property name="APP_LOG_ROOT">./logs</Property>
+	</Properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%style{%d{ISO8601}}{black} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable" />
+		</Console>
+
+
+		<RollingFile name="epicLogger"
+			fileName="${APP_LOG_ROOT}/epic.log" append="true"
+			filePattern="${APP_LOG_ROOT}/epic-%i.log">
+			<PatternLayout>
+				<pattern>%style{%d{ISO8601}}{black} %highlight{%-5level
+					}[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}:
+					%msg%n%throwable</pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="50 mb" />
+			</Policies>
+
+			<DefaultRolloverStrategy max="5" />
+
+		</RollingFile>
+
+	</Appenders>
+
+	<Loggers>
+		<Root level="info">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="epicLogger" />
+		</Root>
+		<Logger name="com.epic" level="info" additivity="true">
+			<appender-ref ref="epicLogger" level="trace" />
+		</Logger>
+
+
+	</Loggers>
+
+</Configuration>
